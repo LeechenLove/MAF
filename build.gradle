@@ -9,18 +9,44 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+ext {
+    slf4jVersion  = '1.7.36'
+    logbackVersion  = '1.2.11'
 
-    testImplementation 'io.cucumber:cucumber-java8:7.2.3'
-    testImplementation 'io.cucumber:cucumber-junit:7.2.3'
+    junitJupiterVersion = '5.8.2'
+    junitPlatformSuiteVersion = '1.8.2'
+    cucumberVersion = '7.3.4'
+}
+
+dependencies {
     implementation 'com.google.inject:guice:5.1.0'
-    implementation 'io.cucumber:cucumber-guice:7.2.3'
+
+    testImplementation("org.junit.jupiter:junit-jupiter:${junitJupiterVersion}")
+    testImplementation("org.junit.platform:junit-platform-suite:${junitPlatformSuiteVersion}")
+
+    testImplementation("io.cucumber:cucumber-java8:${cucumberVersion}")
+    testImplementation("io.cucumber:cucumber-junit:${cucumberVersion}")
+    testImplementation("io.cucumber:cucumber-guice:${cucumberVersion}")
+    testImplementation("io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}")
 }
 
 test {
-    useJUnitPlatform()
+    systemProperties(project.gradle.startParameter.systemPropertiesArgs)
+
+    useJUnitPlatform{
+        includeTags("test")
+    }
+
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+}
+
+compileTestJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.compilerArgs += '-parameters'
 }
 
 tasks.withType(JavaCompile) {
