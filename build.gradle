@@ -34,7 +34,6 @@ test {
     systemProperties(project.gradle.startParameter.systemPropertiesArgs)
 
     useJUnitPlatform{
-        includeTags("test")
     }
 
     testLogging {
