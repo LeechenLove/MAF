@@ -16,6 +16,7 @@ ext {
     junitJupiterVersion = '5.8.2'
     junitPlatformSuiteVersion = '1.8.2'
     cucumberVersion = '7.3.4'
+    logbackVersion = '1.2.11'
 }
 
 dependencies {
@@ -28,6 +29,11 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit:${cucumberVersion}")
     testImplementation("io.cucumber:cucumber-guice:${cucumberVersion}")
     testImplementation("io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}")
+
+    implementation 'io.appium:java-client:8.1.1'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "ch.qos.logback:logback-core:${logbackVersion}"
 }
 
 test {
