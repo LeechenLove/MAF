@@ -19,7 +19,6 @@ public class OpenAppPage implements OpenApp {
 
     @Override
     public void startApp() {
-        System.out.println("Start app...");
         System.out.println(appiumDriver.getStatus());
     }
 }

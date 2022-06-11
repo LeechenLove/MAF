@@ -27,3 +27,5 @@ build
 .DS_Store
 target/*
 .gradle/*
+report
+allure-results
