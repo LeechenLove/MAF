@@ -2,8 +2,10 @@ package com.mobile.automation.service.impl;
 
 import com.google.inject.AbstractModule;
 import com.mobile.automation.appiumdriver.AppiumDriverProvider;
+import com.mobile.automation.contracts.Home;
 import com.mobile.automation.contracts.OpenApp;
 import com.mobile.automation.contracts.TestGuice;
+import com.mobile.automation.page.HomePage;
 import com.mobile.automation.page.OpenAppPage;
 import com.mobile.automation.page.TestGuiceImpl;
 import io.appium.java_client.AppiumDriver;
@@ -20,5 +22,6 @@ public class TestModule extends AbstractModule {
         bind(TestGuice.class).to(TestGuiceImpl.class);
         bind(AppiumDriver.class).toProvider(AppiumDriverProvider.class);
         bind(OpenApp.class).to(OpenAppPage.class);
+        bind(Home.class).to(HomePage.class);
     } //configure end
 }

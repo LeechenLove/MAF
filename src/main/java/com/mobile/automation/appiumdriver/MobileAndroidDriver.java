@@ -18,11 +18,15 @@ public class MobileAndroidDriver {
     private DesiredCapabilities getCapabilities(){
         try{
             DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
+            capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "PDNM00");
-            capabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir")+ "\\testapp\\ApiDemos-debug.apk");
+            capabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir")+ "\\testapp\\loginApp.apk");
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-            capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"11");
+            capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"12");
+            capabilities.setCapability("appPackage", "com.maxsoftlk.loginapplication");
+            capabilities.setCapability("appActivity", "com.maxsoftlk.loginapplication.MainActivity");
             return capabilities;
         }
         catch (Exception exception) {

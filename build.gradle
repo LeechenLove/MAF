@@ -32,6 +32,7 @@ dependencies {
     testImplementation("io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}")
 
     implementation 'io.appium:java-client:8.1.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.3.0'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
     implementation "ch.qos.logback:logback-core:${logbackVersion}"
