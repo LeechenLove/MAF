@@ -26,7 +26,7 @@ public class OpenAppSteps implements En {
 
         Then("^the user navigate to home page$", () -> {
             String failureReason = "home page not appear";
-            boolean actual = home.isDisplay(1);
+            boolean actual = home.isDisplay();
             boolean expected = true;
             Assert.assertEquals(expected, actual);
         });

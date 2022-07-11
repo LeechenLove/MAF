@@ -1,5 +1,6 @@
 package com.mobile.automation.page;
 
+import com.mobile.automation.util.AppiumHelper;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
@@ -16,22 +17,23 @@ public abstract class BasePage implements Base{
     private Logger log;
 
     protected AppiumDriver appiumDriver;
+    protected AppiumHelper appiumHelper;
     protected By uniqueLocator;
 
-    public BasePage(AppiumDriver appiumDriver){
+    public BasePage(AppiumDriver appiumDriver, AppiumHelper appiumHelper){
         this.appiumDriver = appiumDriver;
+        this.appiumHelper = appiumHelper;
         PageFactory.initElements(appiumDriver, this);
         log = LoggerFactory.getLogger(BasePage.class);
     }
 
     @Override
-    public boolean isDisplay(Integer... seconds) throws InterruptedException {
-        Thread.sleep(2000);
-        return appiumDriver.findElement(uniqueLocator).isDisplayed();
+    public boolean isDisplay(Integer... seconds) {
+        return appiumHelper.checkElementIsDisplayed(uniqueLocator, seconds);
     }
 
     @Override
     public void waitDisplay(){
-        appiumDriver.findElement(uniqueLocator).isDisplayed();
+        appiumHelper.waitForElementByLocator(uniqueLocator);
     }
 }

@@ -6,7 +6,7 @@ package com.mobile.automation.page;
  * @DateTime: 2022/7/10 18:00
  **/
 public interface Base {
-    boolean isDisplay(Integer... seconds) throws InterruptedException;
+    boolean isDisplay(Integer... seconds);
 
     void waitDisplay();
 }

@@ -2,6 +2,7 @@ package com.mobile.automation.page;
 
 import com.google.inject.Inject;
 import com.mobile.automation.contracts.OpenApp;
+import com.mobile.automation.util.AppiumHelper;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
@@ -18,8 +19,8 @@ public class OpenAppPage extends BasePage implements OpenApp {
     private final By attemptCounterLabel = By.id("tvAttemptsInfo");
 
     @Inject
-    public OpenAppPage(AppiumDriver appiumDriver){
-        super(appiumDriver);
+    public OpenAppPage(AppiumDriver appiumDriver, AppiumHelper appiumHelper){
+        super(appiumDriver, appiumHelper);
     }
 
     @Override
