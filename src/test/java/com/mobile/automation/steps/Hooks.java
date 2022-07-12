@@ -7,6 +7,7 @@ package com.mobile.automation.steps;
  **/
 import com.google.inject.Inject;
 import io.appium.java_client.AppiumDriver;
+import io.cucumber.java.After;
 
 
 /**
@@ -28,9 +29,9 @@ public class Hooks {
 //        System.out.println("Run this method before all scenario");
 //    }
 //
-//    @After
-//    public void afterAllScenario(){
-//        this.appiumDriver.quit();
-//    }
+    @After
+    public void closeAppiumDriver(){
+        Runtime.getRuntime().addShutdownHook(new Thread(appiumDriver::quit));
+    }
 
 }
