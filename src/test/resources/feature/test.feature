@@ -1,4 +1,4 @@
-@test1
+@test
 Feature: Mobile Automation Test
   This feature is only for MAF framework testing
 

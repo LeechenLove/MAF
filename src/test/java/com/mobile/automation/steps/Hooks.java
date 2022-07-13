@@ -8,6 +8,15 @@ package com.mobile.automation.steps;
 import com.google.inject.Inject;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 
 /**
@@ -17,6 +26,7 @@ import io.cucumber.java.After;
  **/
 public class Hooks {
 
+    private static final Logger log = LoggerFactory.getLogger(Hooks.class);
     private final AppiumDriver appiumDriver;
 
     @Inject
@@ -32,6 +42,14 @@ public class Hooks {
     @After
     public void closeAppiumDriver(){
         Runtime.getRuntime().addShutdownHook(new Thread(appiumDriver::quit));
+    }
+
+    @After
+    public void screenShot(Scenario scenario) throws IOException {
+        if(scenario.isFailed()) {
+            String testName = scenario.getName();
+            Allure.addAttachment(testName, new ByteArrayInputStream(((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES)));
+        }
     }
 
 }
