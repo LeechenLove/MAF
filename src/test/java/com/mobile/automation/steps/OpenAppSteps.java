@@ -3,8 +3,11 @@ package com.mobile.automation.steps;
 import com.google.inject.Inject;
 import com.mobile.automation.contracts.Home;
 import com.mobile.automation.contracts.OpenApp;
+import com.mobile.automation.util.DBConnection;
 import io.cucumber.java8.En;
 import org.junit.Assert;
+
+import java.sql.Connection;
 
 /**
  * @Author: Lulu
@@ -15,13 +18,16 @@ public class OpenAppSteps implements En {
 
     @Inject
     public OpenAppSteps(OpenApp openApp,
-                        Home home) {
+                        Home home,
+                        DBConnection dbConnection) {
         Given("^open the app$", () -> {
             openApp.startApp();
         });
 
         When("^the user can login to the application with valid credentials$", () -> {
-            openApp.logonApp("Osanda", "MaxSoft123");
+            DBConnection.getConn();
+            openApp.logonApp(dbConnection.getUserName()[0], dbConnection.getUserName()[1]);
+            dbConnection.closeDBConnection();
         });
 
         Then("^the user navigate to home page$", () -> {

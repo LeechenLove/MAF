@@ -38,6 +38,8 @@ dependencies {
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
     implementation "ch.qos.logback:logback-core:${logbackVersion}"
     implementation 'io.qameta.allure:allure-cucumber7-jvm:2.18.1'
+
+    implementation 'mysql:mysql-connector-java:8.0.29'
 }
 
 test {

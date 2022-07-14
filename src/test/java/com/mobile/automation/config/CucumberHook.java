@@ -1,6 +1,7 @@
 package com.mobile.automation.config;
 
 import com.google.inject.Inject;
+import com.mobile.automation.util.DBConnection;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.plugin.ConcurrentEventListener;
 import io.cucumber.plugin.event.EventPublisher;
