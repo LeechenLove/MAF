@@ -40,6 +40,10 @@ dependencies {
     implementation 'io.qameta.allure:allure-cucumber7-jvm:2.18.1'
 
     implementation 'mysql:mysql-connector-java:8.0.29'
+    implementation 'com.alibaba:fastjson:2.0.9'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
 }
 
 test {
