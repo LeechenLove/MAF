@@ -60,7 +60,7 @@ public class HttpRequestUtil {
             Response response = okHttpClient.newCall(request).execute();
             if(response.isSuccessful()){
                 assert response.body() != null;
-                jsonArray = JSONArray.parseArray(response.body().string());
+                jsonArray = JSONArray.parseArray(Objects.requireNonNull(response.body()).string());
                 for(Object object : jsonArray){
                     if(object instanceof JSONObject){
                         JSONObject jsonObject = (JSONObject) object;
@@ -90,7 +90,7 @@ public class HttpRequestUtil {
             Response response = okHttpClient.newCall(request).execute();
             if(response.isSuccessful()){
                 assert response.body() != null;
-                jsonObject = JSONObject.parseObject(response.body().string());
+                jsonObject = JSONObject.parseObject(Objects.requireNonNull(response.body()).string());
             }
         }catch (Exception e){
             log.error("parse json object failure", e);
