@@ -1,5 +1,7 @@
 package com.mobile.automation.appiumdriver;
 
+import com.google.inject.Inject;
+import com.typesafe.config.Config;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -13,6 +15,14 @@ import java.net.URL;
  * @DateTime: 2022/6/10 18:38
  **/
 public class MobileIOSDriver {
+
+    private final Config config;
+
+    @Inject
+    public MobileIOSDriver(Config config){
+        this.config = config;
+    }
+
     private DesiredCapabilities getCapabilities() {
         try{
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -31,7 +41,9 @@ public class MobileIOSDriver {
     //生成ios driver
     public AppiumDriver iosDriver() {
         try{
-            return new IOSDriver(new URL("http://localhost:4573/wd/hub"), getCapabilities());
+            return new IOSDriver(
+                    new URL(String.format("http://localhost:%s/wd/hub",
+                            config.getString("android.port"))), getCapabilities());
         }
         catch (Exception exception) {
             throw new RuntimeException("failed to build android driver", exception);

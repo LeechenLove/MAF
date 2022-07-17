@@ -48,6 +48,7 @@ public class Hooks {
 //        Runtime.getRuntime().addShutdownHook(new Thread(appiumDriver::quit));
 //    }
 
+    // 用例执行失败截图
     @After
     public void screenShot(Scenario scenario) throws IOException {
         if(scenario.isFailed()) {
