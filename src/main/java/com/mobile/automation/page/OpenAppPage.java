@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * @Author: Lulu
- * @Description: TODO
+ * @Description: Open app apge
  * @DateTime: 2022/6/10 19:30
  **/
 public class OpenAppPage extends BasePage implements OpenApp {

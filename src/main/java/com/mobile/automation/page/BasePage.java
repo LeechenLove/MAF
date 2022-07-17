@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @Author: Lulu
- * @Description: TODO
+ * @Description: page基类，用于page类的继承
  * @DateTime: 2022/7/10 16:36
  **/
 public abstract class BasePage implements Base{

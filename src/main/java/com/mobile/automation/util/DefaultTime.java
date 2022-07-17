@@ -2,7 +2,7 @@ package com.mobile.automation.util;
 
 /**
  * @Author: Lulu
- * @Description: 默认等待时间
+ * @Description: 提供默认等待时间
  * @DateTime: 2022/7/11 21:19
  **/
 public enum DefaultTime {

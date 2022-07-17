@@ -1,5 +1,11 @@
 package com.mobile.automation.util;
 
+/**
+ * @Author: Lulu
+ * @Description: 调用restfulapi，处理json数据
+ * @DateTime: 2022/7/13 22:12
+ **/
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.HttpUrl;
@@ -46,6 +52,7 @@ public class HttpRequestUtil {
     public static List<String> getUsernameList(){
         List<String> userList = new ArrayList<>();
 
+        // 生成url
         HttpUrl httpUrl = new HttpUrl.Builder()
                 .scheme(schemeValue)
                 .host(hostValue)
@@ -54,8 +61,10 @@ public class HttpRequestUtil {
                 .addPathSegment("user")
                 .addPathSegment("list")
                 .build();
+        //请求url
         Request request = new Request.Builder().url(httpUrl).build();
         JSONArray jsonArray = null;
+        //对response返回的json array数据进行处理
         try{
             Response response = okHttpClient.newCall(request).execute();
             if(response.isSuccessful()){
@@ -86,6 +95,7 @@ public class HttpRequestUtil {
                 .build();
         Request request = new Request.Builder().url(httpUrl).build();
         JSONObject jsonObject = null;
+        // 对response返回的json object数据进行处理
         try{
             Response response = okHttpClient.newCall(request).execute();
             if(response.isSuccessful()){

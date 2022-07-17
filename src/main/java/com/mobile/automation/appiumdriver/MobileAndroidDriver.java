@@ -34,6 +34,7 @@ public class MobileAndroidDriver {
         }
     } //getCapabilities end
 
+    //生成android driver
     public AppiumDriver androidDriver(){
         try{
             return new AndroidDriver(new URL("http://localhost:4723/wd/hub"), getCapabilities());

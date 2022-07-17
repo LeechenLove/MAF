@@ -2,7 +2,7 @@ package com.mobile.automation.util;
 
 /**
  * @Author: Lulu
- * @Description: TODO
+ * @Description: 数据库相关操作
  * @DateTime: 2022/7/13 22:12
  **/
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ public class DBConnection {
         return conn;
     }
 
-
+    //获取user name
     public String[] getUserName(){
         String query = "select * from user";
         String[] user = new String[2];

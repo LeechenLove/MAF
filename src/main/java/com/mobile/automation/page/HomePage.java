@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 /**
  * @Author: Lulu
- * @Description: TODO
+ * @Description: Home page
  * @DateTime: 2022/7/10 21:10
  **/
 public class HomePage extends BasePage implements Home {

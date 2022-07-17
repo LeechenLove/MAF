@@ -16,6 +16,7 @@ public class AppiumDriverProvider implements Provider<AppiumDriver> {
     private final static Logger log = LoggerFactory.getLogger(AppiumDriverProvider.class);
     private final String platform = System.getProperty("platform");
 
+    //获取appium driver
     @Override
     public AppiumDriver get() {
         if (sessionDriver == null) {

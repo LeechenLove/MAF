@@ -28,6 +28,7 @@ public class MobileIOSDriver {
         }
     }
 
+    //生成ios driver
     public AppiumDriver iosDriver() {
         try{
             return new IOSDriver(new URL("http://localhost:4573/wd/hub"), getCapabilities());

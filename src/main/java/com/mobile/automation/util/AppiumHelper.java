@@ -34,6 +34,11 @@ public class AppiumHelper {
 //                        .ignoring(NoSuchElementException.class);
     }
 
+    /**
+     * driver显示等待查找元素
+     *
+     * @param time 显示等待的时间
+     */
     WebDriverWait webDriverWaitForTime(Integer... time){
         Integer waitTime = time.length > 0 ? time[0] : DefaultTime.WAIT_TIME.getTime();
         return (WebDriverWait)
@@ -44,16 +49,19 @@ public class AppiumHelper {
                         .ignoring(ProtocolException.class);
     }
 
+    // 封装findElement方法
     public WebElement findElementByLocator(By locator){
         return appiumDriver.findElement(locator);
     }
 
+    // 显示等待的findElement方法
     public WebElement waitForElementByLocator(By locator, Integer... timeInSeconds){
         webDriverWait = webDriverWaitForTime(timeInSeconds);
         return webDriverWait
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    // 检查页面是否显示，返回true/false
     public boolean checkElementIsDisplayed(By locator, Integer... timeInSeconds){
         webDriverWait = webDriverWaitForTime(timeInSeconds);
         return webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
